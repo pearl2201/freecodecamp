@@ -17,15 +17,19 @@ app.get('/', function(request, response) {
 });
 
 app.get('/api/timestamp/:timestamp', function(request, response) {
-  let ret = Date.parse(request.params.timestamp)
-  if (ret === null || ret === NaN)
+  var ret = Date.parse(request.params.timestamp);
+  //response.send({"ret":ret});
+  
+  if (!ret || ret === undefined || ret === null || ret === NaN) 
   {
-    response.send({"error" : "Invalid Date" ,"ret":ret});
-  }else
-  {
-    let date = new Date(ret);
-    response.send({"unix": date.getTime(), "utc" : date.toUTCString() });
+    response.send({"error" : "Invalid Date"});
   }
+  else 
+  {
+    var date = new Date(ret);
+    response.send({"unix": date.getTime(), "utc" : date.toUTCString()});
+  }
+  
 });
 
 // listen for requests :)
