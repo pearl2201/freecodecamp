@@ -16,6 +16,18 @@ app.get('/', function(request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
+app.get('/api/timestamp/:timestamp', function(request, response) {
+  let ret = Date.parse(request.params.timestamp)
+  if (ret === null || ret === NaN)
+  {
+    response.send({"error" : "Invalid Date" ,"ret":ret});
+  }else
+  {
+    let date = new Date(ret);
+    response.send({"unix": date.getTime(), "utc" : date.toUTCString() });
+  }
+});
+
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function() {
   console.log('Your app is listening on port ' + listener.address().port);
