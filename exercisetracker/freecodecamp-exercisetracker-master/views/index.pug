@@ -1,0 +1,38 @@
+extends layout
+
+block content
+  div(class="col")
+    div(class="row-sm-1")
+      h3(style="text-align:center") Exercise tracker
+    div(class="row-sm-2")
+      div(class="row justify-content-md-center border border-primary")
+        div(class="col-sm-6 border border-primary")
+          div(class="card text-center"  style="width: 30rem;")
+            div(class="card-header")
+              p Create a New User
+            div(class="card-body")
+              h5(class="card-title") POST /api/exercise/new-user
+              form( action="/api/exercise/new-user" method="post")
+                div(class="form-group")
+                  input( name="username" type="text" maxlength="100" placeholder="Username" aria-labelledby="Username")
+                  button( type="submit" class="btn btn-primary") Submit
+        //div(class="card-footer text-muted")
+         // p 2 days ago
+        div(class="col-sm-6 border border-primary")
+          div(class="card text-center "  style="width: 30rem;")
+            div(class="card-header")
+              p Add exercises
+            div(class="card-body")
+              h5(class="card-title") POST /api/exercise/add
+              form( action="/api/exercise/add" method="post")
+                div(class="form-group")              
+                  input( name="userId" type="number" maxlength="100" placeholder="Userid" aria-labelledby="Userid" required)
+                  input( name="description" type="text" maxlength="100" placeholder="Description" aria-labelledby="Description" required)
+                  input( name="duration" type="number" maxlength="100" placeholder="Duration" aria-labelledby="Duration" required) 
+                  input( name="date" type="text" required pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"  maxlength="100" placeholder="Date (yyyy-mm-dd)" aria-labelledby="date")
+                  button( type="submit" class="btn btn-primary") Submit
+      //  div(class="card-footer text-muted")
+        //  p 2 days ago
+    div(class="row-sm-1")
+      p(style="text-align:center") Freecodecamp project. Editor: pearl.2201
+  

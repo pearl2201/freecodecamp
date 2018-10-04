@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  form( action="/shorten_url/" method="post")
+    label Enter Url:
+    input( name="input_url" type="text" maxlength="100" placeholder="Url here" aria-labelledby="input_url")
+    button( type="submit") Submit Dream
+  
+     
